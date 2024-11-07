@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Placement Portal | Interview</title>
+
+    <!-- linking css stylesheets  -->
+    <link rel="icon" type="image/x-icon" href="/images/favicon.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css"
+    />
+    <!-- linking javascripts cdn for flash messages -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
+    <link rel="stylesheet" href="/stylesheets/interview.css" />
+  </head>
+  <body>
+    <!-- header  -->
+    <header class="navbar">
+      <div class="nav-title">
+        <!-- Logo and Title -->
+        <img src="/images/logo.png" alt="Logo" class="logo" />
+        <h1>Placement Portal</h1>
+      </div>
+      <ul class="nav-links" id="navbarLinks">
+        <li><a href="/">Home</a></li>
+        <li><a href="/students/">Students</a></li>
+        <li><a href="/interviews/">Interviews</a></li>
+        <li><a href="/jobs/fetch-jobs">Jobs</a></li>
+        <li><a href="/download-csv/">Download CSV</a></li>
+        <li class="mobile-only"><a href="/profile">Profile</a></li>
+        <li class="mobile-only"><a href="/employees/sign-out">Sign Out</a></li>
+      </ul>
+      <div class="user-profile">
+        <!-- Profile Picture and Sign Out -->
+        <a href="/profile"
+          ><img
+            src="/images/profile.jpg"
+            alt="Profile Picture"
+            class="profile-pic"
+        /></a>
+        <button class="sign-out-btn">
+          <a href="/employees/sign-out">Sign Out</a>
+        </button>
+      </div>
+      <!-- Hamburger Menu Icon -->
+      <div class="hamburger" id="hamburgerIcon">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </header>
+
+    <!-- List of Interviews -->
+    <section class="interviews-list">
+      <div class="container flex-col">
+        <div class="flex-col text-center">
+          <h1>Interviews List</h1>
+        </div>
+
+        <div class="interviews-container">
+          <% interviews.forEach(interview => { %>
+          <div class="interview-item">
+            <img alt="company" class="company-logo" src="/images/office.png" />
+            <div class="interview-details">
+              <h2><%= interview.companyName %></h2>
+              <p><%= interview.date %></p>
+              <p><%= interview.role %></p>
+              <p class="details-link">
+                <a href="/interviews/<%=interview._id%>">Details</a>
+              </p>
+            </div>
+          </div>
+          <% }); %>
+        </div>
+      </div>
+    </section>
+
+    <!-- Create an Interview -->
+    <section class="add-interview">
+      <div class="container">
+        <div class="flex-col text-center">
+          <h1>Add New Interview</h1>
+        </div>
+        <div class="form-container">
+          <form action="/interviews/create" method="POST">
+            <div class="form-group">
+              <label for="companyName">Company</label>
+              <input type="text" id="companyName" name="companyName" required />
+            </div>
+            <div class="form-group">
+              <label for="role">Role</label>
+              <input type="text" id="role" name="role" required />
+            </div>
+            <div class="form-group">
+              <label for="date">Date</label>
+              <input type="date" id="date" name="date" required />
+            </div>
+            <div class="form-group">
+              <button type="submit" class="add-interview-btn">
+                Add Interview
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-container">
+        <div class="logo">
+          <img src="/images/logo.png" alt="Logo" />
+          <span>Placement Portal</span>
+        </div>
+        <nav>
+          <a href="/">Home</a>
+          <a href="/interviews/">Interviews</a>
+          <a href="/students/">Students</a>
+          <a href="/jobs/fetch-jobs">Jobs</a>
+          <a href="/download-csv/">Download CSV</a>
+        </nav>
+        <p>© 2024 Placement Cell</p>
+      </div>
+    </footer>
+
+    <!-- linking external javascripts  -->
+    <script>
+      <% if(flash.success && flash.success.length > 0){%>
+                  new Noty({
+                  theme:'nest',
+                  text: '<h3><%= flash.success%></h3>',
+                  type:'success',
+                  layout:'topRight',
+                  timeout:3000
+              }).show();
+              <% } %>
+
+              <% if(flash.error && flash.error.length > 0){%>
+                new Noty({
+                  theme:'nest',
+                  text: '<%= flash.error%>',
+                  type:'error',
+                  layout:'topRight',
+                  timeout:3000
+                }).show();
+              <% } %>
+
+      // Hamburger menu toggle
+      const hamburgerIcon = document.getElementById("hamburgerIcon");
+      const navbarLinks = document.getElementById("navbarLinks");
+
+      hamburgerIcon.addEventListener("click", () => {
+        navbarLinks.classList.toggle("active");
+        hamburgerIcon.classList.toggle("active");
+      });
+    </script>
+  </body>
+</html>

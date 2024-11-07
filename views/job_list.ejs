@@ -1,0 +1,94 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Placement Portal | Jobs</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.png" />
+    
+    <link rel="stylesheet" href="/stylesheets/job_list.css" />
+  </head>
+  <body>
+   <!-- header  -->
+   <header class="navbar">
+    <div class="nav-title">
+      <!-- Logo and Title -->
+      <img src="/images/logo.png" alt="Logo" class="logo" />
+      <h1>Placement Portal</h1>
+    </div>
+    <ul class="nav-links" id="navbarLinks">
+      <li><a href="/">Home</a></li>
+      <li><a href="/students/">Students</a></li>
+      <li><a href="/interviews/">Interviews</a></li>
+      <li><a href="/jobs/fetch-jobs">Jobs</a></li>
+      <li><a href="/download-csv/">Download CSV</a></li>
+      <li class="mobile-only"><a href="/profile">Profile</a></li>
+      <li class="mobile-only"><a href="/employees/sign-out">Sign Out</a></li>
+    </ul>
+    <div class="user-profile">
+      <!-- Profile Picture and Sign Out -->
+      <a href="/profile"
+        ><img
+          src="/images/profile.jpg"
+          alt="Profile Picture"
+          class="profile-pic"
+      /></a>
+      <button class="sign-out-btn">
+        <a href="/employees/sign-out">Sign Out</a>
+      </button>
+    </div>
+    <!-- Hamburger Menu Icon -->
+    <div class="hamburger" id="hamburgerIcon">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+  </header>
+
+    <!-- fetches real available jobs -->
+    <section class="jobs-section">
+      <div class="container">
+        <div class="job-list">
+          <% data.results.forEach((job) => {%>
+          <div class="job-item">
+            <div class="job-card">
+              <h2 class="job-profile">Job Profile</h2>
+              <h1 class="job-title"><%= job.name %></h1>
+              <p class="job-info"><b>Company: </b><%= job.company.name %></p>
+              <p class="job-info">
+                <b>Published Date: </b><%= job.publication_date %>
+              </p>
+              <% job.categories.forEach((category) => {%>
+              <p class="job-info"><b>Category: </b><%= category.name %></p>
+              <% }); %>
+              <a
+                class="apply-link"
+                href="<%= job.refs.landing_page %>"
+                target="_blank"
+                >Apply</a
+              >
+            </div>
+          </div>
+          <% }); %>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-container">
+        <div class="logo">
+          <img src="/images/logo.png" alt="Logo" />
+          <span>Placement Portal</span>
+        </div>
+        <nav>
+          <a href="/">Home</a>
+          <a href="/interviews/">Interviews</a>
+          <a href="/students/">Students</a>
+          <a href="/jobs/fetch-jobs">Jobs</a>
+          <a href="/download-csv/">Download CSV</a>
+        </nav>
+        <p>© 2024 Placement Cell</p>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,225 @@
+/* Google Fonts Import Link */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Navbar Styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  padding: 10px 20px;
+}
+
+.nav-title {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 50px;
+  margin-right: 10px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li {
+  list-style: none;
+}
+
+.nav-links li a {
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+}
+.mobile-only {
+  display: none;
+}
+.profile-pic {
+  width: 48px;
+  height: 48px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  margin-top: 10px;
+  margin-right: 30px;
+  box-shadow: 0 4px 10px rgba(161, 99, 245, 0.3),
+    0 4px 10px rgba(239, 186, 211, 0.3);
+}
+/* Hamburger Menu */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.hamburger .bar {
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+}
+
+.nav-links.active {
+  display: block;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+/* Hover Effects for Links */
+.nav-links li a:hover {
+  color: #0079be;
+  border-bottom: 2px solid #0079be;
+}
+
+/* For header title */
+h1 {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+.sign-out-btn {
+  background-color: #9B7EBD; 
+  color: white; 
+  border: none; 
+  padding: 10px 20px; 
+  margin-left: 20px;
+  font-size: 16px; 
+  border-radius: 5px; 
+  cursor: pointer; 
+  transition: background-color 0.3s ease; 
+}
+.sign-out-btn a {
+  color: white; 
+  text-decoration: none; 
+}
+.sign-out-btn:hover {
+  background-color: #3B1E54; 
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+  padding: 2rem;
+}
+
+/* Button styling */
+.download-button {
+  background-color: #9B7EBD; 
+  color: white; 
+  border: none; 
+  padding: 0.5rem 2rem; 
+  border-radius: 8px; 
+  font-size: 1.125rem; 
+  cursor: pointer; 
+  outline: none; 
+  transition: background-color 0.3s ease; 
+}
+
+/* Hover state */
+.download-button:hover {
+  background-color: #3B1E54; 
+}
+
+/* Focus state */
+.download-button:focus {
+  outline: none; 
+}
+/* Footer */
+footer {
+  background-color: #665870;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.footer-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; 
+}
+
+.footer-container .logo {
+  display: flex;
+  align-items: center;
+}
+
+.footer-container .logo img {
+  width: 40px;
+  margin-right: 10px;
+}
+
+footer nav {
+  display: flex;
+  gap: 15px;
+}
+
+footer nav a {
+  color: #bbb;
+  text-decoration: none;
+}
+
+footer nav a:hover {
+  color: #fff;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 850px) {
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 80px;
+    right: 20px;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+  .user-profile {
+    display: none; 
+  }
+
+  .mobile-only {
+    display: block;
+  }
+  .footer-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  footer nav {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    gap: 10px; 
+    margin-top: 10px; 
+  }
+
+  footer p {
+    margin-top: 20px; 
+  }
+}

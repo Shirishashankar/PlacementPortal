@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Placement Portal | Interview Details</title>
+
+    <!-- linking css stylesheets  -->
+    <link rel="icon" type="image/x-icon" href="/images/favicon.png" />
+
+    <link rel="stylesheet" href="/stylesheets/interview_details.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css"
+    />
+
+    <!-- linking javascripts cdn for flash messages -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
+  </head>
+  <body>
+    <!-- header  -->
+    <header class="navbar">
+      <div class="nav-title">
+        <!-- Logo and Title -->
+        <img src="/images/logo.png" alt="Logo" class="logo" />
+        <h1>Placement Portal</h1>
+      </div>
+      <ul class="nav-links" id="navbarLinks">
+        <li><a href="/">Home</a></li>
+        <li><a href="/students/">Students</a></li>
+        <li><a href="/interviews/">Interviews</a></li>
+        <li><a href="/jobs/fetch-jobs">Jobs</a></li>
+        <li><a href="/download-csv/">Download CSV</a></li>
+        <li class="mobile-only"><a href="/profile">Profile</a></li>
+        <li class="mobile-only"><a href="/employees/sign-out">Sign Out</a></li>
+      </ul>
+      <div class="user-profile">
+        <!-- Profile Picture and Sign Out -->
+        <a href="/profile"
+          ><img
+            src="/images/profile.jpg"
+            alt="Profile Picture"
+            class="profile-pic"
+        /></a>
+        <button class="sign-out-btn">
+          <a href="/employees/sign-out">Sign Out</a>
+        </button>
+      </div>
+      <!-- Hamburger Menu Icon -->
+      <div class="hamburger" id="hamburgerIcon">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </header>
+
+    <!-- Company Details -->
+    <section class="company-details">
+      <div class="container">
+        <div class="company-info">
+          <div class="company-logo">
+            <img src="/images/office.png" alt="Company Logo" class="logo-img" />
+          </div>
+          <div class="company-description">
+            <h2 class="company-name"><%= interview.companyName %></h2>
+            <p class="company-overview">Lorem ipsum dolor sit amet...</p>
+            <span class="interview-date"><%= interview.date %></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Students List -->
+    <section class="students-list">
+      <div class="container">
+        <h1 class="section-title">Students List</h1>
+        <div class="student-cards">
+          <% interview.students.forEach(student => { %>
+          <div class="student-card">
+            <img
+              src="/images/profile.jpg"
+              alt="Student Image"
+              class="student-image"
+            />
+            <div class="student-details">
+              <h2 class="student-name"><%= student.name %></h2>
+              <p class="student-info">Batch:<%= student.batch %></p>
+              <p class="student-info">College:<%= student.college %></p>
+              <p class="student-info">Status:<%= student.status %></p>
+              <p class="student-info">Batch:<%= student.DSAFinalScore %></p>
+              <p class="student-info">Batch:<%= student.WebDFinalScore %></p>
+              <p class="student-info">Batch:<%=student.ReactFinalScore %></p>
+            </div>
+          </div>
+          <% }); %>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mark Result Status -->
+    <section class="mark-result">
+      <div class="container">
+        <h1 class="section-title">Mark Result Status</h1>
+        <form
+          action="/interviews/<%= interview._id %>/result"
+          method="POST"
+          class="result-form"
+        >
+          <label for="name">Name</label>
+          <select name="studentId" class="select-student">
+            <% interview.students.forEach(student => { %>
+            <option value="<%= student._id %>"><%= student.name %></option>
+            <% }); %>
+          </select>
+          <label for="result">Result</label>
+          <select name="result" class="select-result">
+            <option value="PASS">PASS</option>
+            <option value="FAIL">FAIL</option>
+            <option value="On Hold">On Hold</option>
+            <option value="Didn't Attempt">Didn't Attempt</option>
+          </select>
+          <button class="mark-button">Mark</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Allocate a Student -->
+    <section class="allocate-student">
+      <div class="container">
+        <h1 class="section-title">Allocate New Student</h1>
+
+        <form
+          action="/interviews/<%= interview._id %>/allocate"
+          method="POST"
+          class="allocate-form"
+        >
+          <select name="studentId" class="select-student">
+            <% students.forEach(student => { %>
+            <option value="<%= student._id %>"><%= student.name %></option>
+            <% }); %>
+          </select>
+          <button class="allocate-button">Allocate</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-container">
+        <div class="logo">
+          <img src="/images/logo.png" alt="Logo" />
+          <span>Placement Portal</span>
+        </div>
+        <nav>
+          <a href="/">Home</a>
+          <a href="/interviews/">Interviews</a>
+          <a href="/students/">Students</a>
+          <a href="/jobs/fetch-jobs">Jobs</a>
+          <a href="/download-csv/">Download CSV</a>
+        </nav>
+        <p>© 2024 Placement Cell</p>
+      </div>
+    </footer>
+
+    <!-- linking external javascripts  -->
+    <script>
+      <% if(flash.success && flash.success.length > 0){%>
+                  new Noty({
+                  theme:'nest',
+                  text: '<h3><%= flash.success%></h3>',
+                  type:'success',
+                  layout:'topRight',
+                  timeout:3000
+              }).show();
+              <% } %>
+
+              <% if(flash.error && flash.error.length > 0){%>
+                new Noty({
+                  theme:'nest',
+                  text: '<%= flash.error%>',
+                  type:'error',
+                  layout:'topRight',
+                  timeout:3000
+                }).show();
+              <% } %>
+
+              // Hamburger menu toggle
+      const hamburgerIcon = document.getElementById("hamburgerIcon");
+      const navbarLinks = document.getElementById("navbarLinks");
+
+      hamburgerIcon.addEventListener("click", () => {
+        navbarLinks.classList.toggle("active");
+        hamburgerIcon.classList.toggle("active");
+      });
+    </script>
+  </body>
+</html>

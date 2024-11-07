@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Placement Portal | Students</title>
+
+    <!-- Linking CSS stylesheets -->
+    <link rel="icon" type="image/x-icon" href="/images/favicon.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"
+      integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    
+    <link rel="stylesheet" href="/stylesheets/student.css" />
+  </head>
+
+  <body>
+    <!-- header  -->
+    <header class="navbar">
+      <div class="nav-title">
+        <!-- Logo and Title -->
+        <img src="/images/logo.png" alt="Logo" class="logo" />
+        <h1>Placement Portal</h1>
+      </div>
+      <ul class="nav-links" id="navbarLinks">
+        <li><a href="/">Home</a></li>
+        <li><a href="/students/">Students</a></li>
+        <li><a href="/interviews/">Interviews</a></li>
+        <li><a href="/jobs/fetch-jobs">Jobs</a></li>
+        <li><a href="/download-csv/">Download CSV</a></li>
+        <li class="mobile-only"><a href="/profile">Profile</a></li>
+        <li class="mobile-only"><a href="/employees/sign-out">Sign Out</a></li>
+      </ul>
+      <div class="user-profile">
+        <!-- Profile Picture and Sign Out -->
+        <a href="/profile"
+          ><img
+            src="/images/profile.jpg"
+            alt="Profile Picture"
+            class="profile-pic"
+        /></a>
+        <button class="sign-out-btn">
+          <a href="/employees/sign-out">Sign Out</a>
+        </button>
+      </div>
+      <!-- Hamburger Menu Icon -->
+      <div class="hamburger" id="hamburgerIcon">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </header>
+
+    <!-- main container -->
+    <main>
+      <section class="students-list">
+        <div class="section-header">
+          <h1>Students List</h1>
+        </div>
+
+        <div class="container">
+          <div class="student-cards">
+            <%students.forEach(student => { %>
+            <div class="student-card">
+              <img
+                alt="profile"
+                src="/images/profile.jpg"
+                class="profile-img"
+              />
+              <div class="student-info">
+                <h2><%= student.name %></h2>
+                <p>Batch: <%= student.batch %></p>
+                <p>College: <%= student.college %></p>
+                <p>Status: <%= student.status %></p>
+                <p>DSA Final Score: <%= student.DSAFinalScore %></p>
+                <p>WebD Final Score: <%= student.WebDFinalScore %></p>
+                <p>React Final Score: <%= student.ReactFinalScore %></p>
+              </div>
+            </div>
+            <% }); %>
+          </div>
+        </div>
+      </section>
+
+      <section class="add-student">
+        <div class="container">
+          <div class="section-header">
+            <h1>Add New Student</h1>
+          </div>
+          <div class="form-container">
+            <form action="/students/create" method="POST">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required />
+
+              <label for="batch">Batch</label>
+              <input type="text" id="batch" name="batch" required />
+
+              <label for="college">College</label>
+              <input type="text" id="college" name="college" required />
+
+              <label for="status">Status</label>
+              <input type="text" id="status" name="status" required />
+
+              <label for="DSAFinalScore">DSA Final Score</label>
+              <input
+                type="text"
+                id="DSAFinalScore"
+                name="DSAFinalScore"
+                required
+              />
+
+              <label for="WebDFinalScore">WebD Final Score</label>
+              <input
+                type="text"
+                id="WebDFinalScore"
+                name="WebDFinalScore"
+                required
+              />
+
+              <label for="ReactFinalScore">React Final Score</label>
+              <input
+                type="text"
+                id="ReactFinalScore"
+                name="ReactFinalScore"
+                required
+              />
+
+              <button type="submit">Add Student</button>
+            </form>
+            <button onclick="fetchDataToDownload()">Download CSV</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-container">
+        <div class="logo">
+          <img src="/images/logo.png" alt="Logo" />
+          <span>Placement Portal</span>
+        </div>
+        <nav>
+          <a href="/">Home</a>
+          <a href="/interviews/">Interviews</a>
+          <a href="/students/">Students</a>
+          <a href="/jobs/fetch-jobs">Jobs</a>
+          <a href="/download-csv/">Download CSV</a>
+        </nav>
+        <p>© 2024 Placement Cell</p>
+      </div>
+    </footer>
+
+    <script>
+      const fetchDataToDownload = () => {
+        axios
+          .get(`<%=BASE_URL%>/students/download-csv`)
+          .then(({ data }) => {
+            window.open(data.downloadURL, "blank");
+          })
+          .catch((error) => {
+            console.log(error);
+            alert("Error Happened");
+          });
+      };
+
+      <% if(flash.success && flash.success.length > 0){%>
+        new Noty({
+          theme: 'nest',
+          text: '<h3><%= flash.success%></h3>',
+          type: 'success',
+          layout: 'topRight',
+          timeout: 3000
+        }).show();
+      <% } %>
+
+      <% if(flash.error && flash.error.length > 0){%>
+        new Noty({
+          theme: 'nest',
+          text: '<%= flash.error%>',
+          type: 'error',
+          layout: 'topRight',
+          timeout: 3000
+        }).show();
+      <% } %>
+
+      // Hamburger menu toggle
+      const hamburgerIcon = document.getElementById("hamburgerIcon");
+      const navbarLinks = document.getElementById("navbarLinks");
+
+      hamburgerIcon.addEventListener("click", () => {
+        navbarLinks.classList.toggle("active");
+        hamburgerIcon.classList.toggle("active");
+      });
+    </script>
+  </body>
+</html>
