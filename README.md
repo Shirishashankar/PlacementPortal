@@ -68,24 +68,41 @@
 ## Project Demo
  - <b> <i> Login Page  </i></b> <br><br>
  
+ <img width="1470" alt="image" src="https://github.com/user-attachments/assets/fde84129-28d8-487a-ae44-ee9c701c68a5">
 
 -  <b> <i> Sign Up  Page  </i></b> <br><br>
 
+<img width="1469" alt="image" src="https://github.com/user-attachments/assets/5744cc1d-857a-4d69-b15b-4793180bb857">
 
 -  <b> <i> Forget Password Page  </i></b> <br><br>
 
+<img width="1469" alt="image" src="https://github.com/user-attachments/assets/9ea4a4a8-17e7-4d97-a15d-a4d80446c7b7">
 
 -  <b> <i> Home Page  </i></b> <br><br>
 
+<img width="1470" alt="image" src="https://github.com/user-attachments/assets/ba77b653-b44c-4298-9236-0b5e023d829a">
+
 -  <b> <i> Students Details  Page  </i></b> <br><br>
+
+<img width="1469" alt="image" src="https://github.com/user-attachments/assets/60e59d76-78ff-440b-bcf0-3afcf46dc324">
 
 -  <b> <i> Interviews Page  </i></b> <br><br>
 
+<img width="1470" alt="image" src="https://github.com/user-attachments/assets/4c0477ee-7744-4c35-b35e-5f20f3362ae2">
+
 -  <b> <i> Interviews Details  Page  </i></b> <br><br>
+
+<img width="1468" alt="image" src="https://github.com/user-attachments/assets/aa43dc24-c79a-4758-b4fb-d83bc928987d">
 
 -  <b> <i> Job Details  Page  </i></b> <br><br>
 
+<img width="1470" alt="image" src="https://github.com/user-attachments/assets/4409f78e-eb2f-43a4-9d0a-603752520465">
+
 -  <b> <i> CSV File  </i></b> <br><br>
+
+<img width="1470" alt="image" src="https://github.com/user-attachments/assets/f25b4e13-2ec0-42ea-bbbc-397185acae3b">
+
+<img width="1470" alt="image" src="https://github.com/user-attachments/assets/d4e724ad-bd14-4329-908d-34ddf65a3892">
 
 ## Author
 
