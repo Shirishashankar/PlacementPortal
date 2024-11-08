@@ -2,6 +2,21 @@
   
  <b> "Placement Portal" is a web application designed and developed to manage placement-related activities for a company. The main objective was to create a platform where employees could input and manage student data, schedule interviews, track placement statuses, and then export the data in CSV format for generating various reports.<b> 
 
+# Deployed Link
+
+ <b>[Live Link](https://placementportal-1ovx.onrender.com/)</b>
+ 
+ <b>Test user</b>
+     <p>username: tester@gmail.com</p>
+     <p>password: tester </p>
+
+## Table of Contents
+-  <b> [Features](#features)</b>
+-  <b> [Getting Started](#getting-started)</b>
+-  <b> [Tech Stack](#Tech-Stack) </b>
+-  <b> [Project Demo](#Project-Demo) </b>
+-  <b> [Author](#Author)</b>
+
 ## Features
 -  <b>1. Secure Authentication </b>
      <p>The platform offers a robust sign-up and sign-in system exclusively for company employees, ensuring that only authorized personnel have access to sensitive data and management features.</p>
@@ -17,6 +32,19 @@
    <p>A dedicated page pulls in real-time job listings for React and Node.js positions across India from external job APIs, such as the GitHub Jobs API, to offer up-to-date job opportunities for students.</p>
 -  <b> 7. CSV Export Functionality </b>
 -  <p> Employees can download a comprehensive CSV file containing all relevant student and interview data, including details like student ID, name, college, placement status, course scores, interview results, and more. This feature simplifies report generation and data analysis.</p>
+
+## Getting Started
+-  <b> 1. &nbsp; Clone Git Repo  </b>
+    <br>----<i> git clone https://github.com/Shirishashankar/PlacementPortal.git </i><br><br>
+-  <b> 2.  &nbsp;Install NPM dependencies </b>
+   <br>----<i> npm install</i> <br><br>
+-  <b> 2.  &nbsp;Set Up .env file  </b>
+   <br>----<i> add mongodb your url</i> <br><br>
+-  <b> 3. &nbsp; Then simply start your app </b>
+   <br>----<i>npm start </i><br><br>
+
+### Prerequisites
+- <b>NodeJs Any Version</b>   
 
 ### Usage
 
@@ -36,3 +64,32 @@
    <p> Axios: A promise-based HTTP client, Axios was used to fetch external job data from APIs such as GitHub Jobs API, keeping the job listings up-to-date for users.</p>
 -  <b> 6.Deployment </b>
    <p>The application was deployed using cloud services like Vercel, enabling seamless hosting, fast access, and scalability based on project needs.</p>
+
+## Project Demo
+ - <b> <i> Login Page  </i></b> <br><br>
+ 
+
+-  <b> <i> Sign Up  Page  </i></b> <br><br>
+
+
+-  <b> <i> Forget Password Page  </i></b> <br><br>
+
+
+-  <b> <i> Home Page  </i></b> <br><br>
+
+-  <b> <i> Students Details  Page  </i></b> <br><br>
+
+-  <b> <i> Interviews Page  </i></b> <br><br>
+
+-  <b> <i> Interviews Details  Page  </i></b> <br><br>
+
+-  <b> <i> Job Details  Page  </i></b> <br><br>
+
+-  <b> <i> CSV File  </i></b> <br><br>
+
+## Author
+
+
+- Name: Shirisha Shankar
+- GitHub: <a><b>[https://github.com/Shirishashankar](https://github.com/Shirishashankar/PlacementPortal)</a></b>
+- Email: shirishak1909@gmail.com
