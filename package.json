@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js"
+    "start": "node app.js"
   },
   "keywords": [
     "placementcellapp"
@@ -13,9 +13,9 @@
   "author": "Shirisha Shankar",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Shirishashankar/Placement_Portal/issues"
+    "url": "https://github.com/Shirishashankar/PlacementPortal/issues"
   },
-  "homepage": "https://github.com/Shirishashankar/Placement_Portal#readme",
+  "homepage": "https://github.com/Shirishashankar/PlacementPortal#readme",
   "dependencies": {
     "@babel/core": "^7.22.9",
     "@babel/preset-env": "^7.22.9",
@@ -32,7 +32,7 @@
     "express-ejs-layouts": "^2.5.1",
     "express-session": "^1.18.1",
     "fast-csv": "^4.3.6",
-    "mongodb": "4.0",
+    "mongodb": "^6.10.0",
     "mongoose": "^7.8.2",
     "node-fetch": "^3.3.2",
     "nodemon": "^3.0.1",

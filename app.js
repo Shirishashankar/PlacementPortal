@@ -12,11 +12,19 @@ const MongoStore = require("connect-mongo");
 const flash = require("connect-flash");
 const customMware = require("./config/middleware");
 
+const BASE_URL = process.env.BASE_URL.endsWith("/")
+  ? process.env.BASE_URL.slice(0, -1)
+  : process.env.BASE_URL;
+
+app.locals.BASE_URL = BASE_URL; 
+
 //for parsing the form data
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 //serving the static files
 app.use(express.static("./public"));
+
+
 
 //set up the view engine
 app.set("view engine", "ejs");
@@ -50,6 +58,7 @@ app.use(flash());
 app.use(customMware.setFlash);
 //express routes handler
 app.use("/", require("./routes"));
+
 //start the server
 app.listen(port, (err) => {
   if (err) {

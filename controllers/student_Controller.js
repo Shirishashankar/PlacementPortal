@@ -50,7 +50,7 @@ module.exports.downloadCSV = async (req, res) => {
       }
 
       if (!fs.existsSync("public/files/export/")) {
-        fs.mkdirSync("./public/files/export/");
+        fs.mkdirSync("./public/files/export/", { recursive: true });
       }
     }
 

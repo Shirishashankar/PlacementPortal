@@ -72,10 +72,10 @@
 
     <!-- linking external javascripts -->
     <script>
-
+            const BASE_URL = "<%= BASE_URL %>";
             const fetchDataToDownload = () => {
                 axios
-                  .get(`<%=BASE_URL%>/students/download-csv`)
+                  .get(`${BASE_URL}/students/download-csv`)
                   .then(({ data }) => {
                     console.log(data);
                     window.open(data.downloadURL, "blank");
